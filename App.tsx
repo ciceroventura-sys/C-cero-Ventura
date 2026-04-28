@@ -18,36 +18,53 @@ import { PilotType } from './types';
 
 const App: React.FC = () => {
   const [stage, setStage] = useState(0);
+  const [nextStageAfterCockpit, setNextStageAfterCockpit] = useState(4);
   const [pilot, setPilot] = useState<PilotType>(null);
   const [showError, setShowError] = useState(false);
   const [introText, setIntroText] = useState(`Toda escola que cresce passa por grandes desafios. Agora é a sua vez de assumir o comando.
 
 Sua missão de crescimento começa agora.`);
-  const [outroText, setOutroText] = useState(`Pilotar a gestão escolar não 
-é uma missão simples. 
+  const [outroText, setOutroText] = useState(`Pilotar a gestão escolar não
+é uma missão simples.
 
-Mas com parceiros  que oferecem 
-estabilidade, previsibilidade  e suporte, 
-tudo fica mais leve.`);
+Mas com parceiros que oferecem 
+estabilidade no fluxo de caixa 
+e crescimento de alunos e 
+expansão nos investimentos, 
+tudo fica mais leve e com resultados 
+mais expressivos.`);
 
   useEffect(() => {
     if (stage === 3) {
-      const timer = setTimeout(() => setStage(4), 4000);
+      const timer = setTimeout(() => {
+        setNextStageAfterCockpit(4);
+        setStage(31);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+    if (stage === 31) {
+      const timer = setTimeout(() => setStage(nextStageAfterCockpit), 3000);
       return () => clearTimeout(timer);
     }
     if (stage === 15) {
-      const timer = setTimeout(() => setStage(7), 4000);
+      const timer = setTimeout(() => {
+        setNextStageAfterCockpit(7);
+        setStage(31);
+      }, 4000);
       return () => clearTimeout(timer);
     }
     if (stage === 16) {
-      const timer = setTimeout(() => setStage(10), 4000);
+      const timer = setTimeout(() => {
+        setNextStageAfterCockpit(10);
+        setStage(31);
+      }, 4000);
       return () => clearTimeout(timer);
     }
     if (stage === 17) {
       const timer = setTimeout(() => setStage(13), 4000);
       return () => clearTimeout(timer);
     }
-  }, [stage]);
+  }, [stage, nextStageAfterCockpit]);
 
   const handleCoverStart = () => setStage(1);
   const handleStart = () => setStage(2);
@@ -240,6 +257,62 @@ tudo fica mais leve.`);
     </div>
   );
 
+  const renderCockpit = () => (
+    <div className="flex flex-col items-center justify-center h-full relative z-10 overflow-hidden bg-black">
+      <style>{`
+        @keyframes cockpit-vibration {
+          0% { transform: translate(0, 0) scale(1.1); }
+          5% { transform: translate(-2px, 2px) scale(1.1); }
+          10% { transform: translate(2px, -2px) scale(1.1); }
+          15% { transform: translate(-2px, -2px) scale(1.1); }
+          20% { transform: translate(2px, 2px) scale(1.1); }
+          25% { transform: translate(0, 0) scale(1.1); }
+          100% { transform: translate(0, 0) scale(1.1); }
+        }
+        .animate-cockpit {
+          animation: cockpit-vibration 0.15s infinite;
+        }
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+        @keyframes progress {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .scanline {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100px;
+          background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.1), transparent);
+          animation: scanline 4s linear infinite;
+        }
+      `}</style>
+      <div className="absolute inset-0 w-full h-full animate-cockpit overflow-hidden">
+        <img 
+          src="https://iili.io/BPKZ4Bj.png" 
+          alt="Cockpit View" 
+          className="w-full h-full object-cover scale-110"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-blue-500/5 mix-blend-overlay"></div>
+        <div className="scanline"></div>
+      </div>
+      
+      <div className="relative z-20 text-center px-6">
+        <div className="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-blue-400/50 mb-4 animate-pulse shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+          <p className="text-blue-400 font-nasa text-[10px] tracking-[0.3em] uppercase font-bold">Protocolo de Aceleração Ativo</p>
+          <div className="mt-2 h-1 w-full bg-blue-900/50 rounded-full overflow-hidden">
+            <div className="h-full bg-blue-400 animate-[progress_3s_linear_infinite]" style={{width: '60%'}}></div>
+          </div>
+        </div>
+      </div>
+      <FooterLogo />
+    </div>
+  );
+
   const renderAlert = (icon: React.ReactNode, title: string, text: string, next: number) => (
     <div className="flex flex-col items-center justify-center h-full py-8 px-6 relative z-10 overflow-y-auto">
       <style>{`
@@ -350,34 +423,97 @@ tudo fica mais leve.`);
     </div>
   );
 
+  const renderVictoryLaunch = (title: string) => (
+    <div className="flex flex-col items-center justify-center h-full relative z-10 overflow-hidden px-6 bg-blue-400/30 backdrop-blur-md">
+      <style>{`
+        @keyframes celebrate {
+          0% { transform: translate(0, 0) scale(0); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(1); opacity: 0; }
+        }
+        .celebration-particle {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          animation: celebrate 2s ease-out infinite;
+        }
+      `}</style>
+      
+      {/* Particles */}
+      {[...Array(30)].map((_, i) => {
+        const tx = (Math.random() - 0.5) * 400;
+        const ty = (Math.random() - 0.5) * 400;
+        return (
+          <div 
+            key={i}
+            className="celebration-particle"
+            style={{
+              top: '50%',
+              left: '50%',
+              '--tw-translate-x': `${tx}px`,
+              '--tw-translate-y': `${ty}px`,
+              animationDelay: `${Math.random() * 2}s`,
+              backgroundColor: i % 3 === 0 ? '#60a5fa' : i % 3 === 1 ? '#34d399' : '#fbbf24'
+            } as React.CSSProperties}
+          />
+        );
+      })}
+
+      <div className="absolute inset-0 flex items-end justify-center pb-20 animate-rocket-launch">
+        <div className="relative flex flex-col items-center">
+          <RealisticRocket size={200} className="drop-shadow-[0_0_50px_rgba(96,165,250,0.6)]" />
+        </div>
+      </div>
+      
+      <div className="relative z-20 text-center mt-[-20%] p-8 bg-blue-400/10 border-2 border-blue-300/30 rounded-[2.5rem] backdrop-blur-xl shadow-[0_0_60px_rgba(59,130,246,0.3)] max-w-sm">
+        <h2 className="text-[28px] font-black text-white mb-4 uppercase tracking-tighter leading-tight font-nasa animate-in zoom-in duration-500">{title}</h2>
+        <div className="flex justify-center gap-2 mb-4">
+           <Star className="text-yellow-400 fill-yellow-400 animate-pulse" size={24} />
+           <Star className="text-yellow-400 fill-yellow-400 animate-pulse delay-75" size={24} />
+           <Star className="text-yellow-400 fill-yellow-400 animate-pulse delay-150" size={24} />
+        </div>
+        <p className="text-sm text-blue-100 uppercase font-bold tracking-[0.2em] opacity-80">Missão Consolidada</p>
+      </div>
+      <FooterLogo />
+    </div>
+  );
+
   const renderCurrentStage = () => {
     switch(stage) {
       case 0: return renderCover();
       case 1: return renderIntro();
       case 2: return renderPilotSelection();
       case 3: return renderLaunch();
+      case 31: return renderCockpit();
       case 15: return renderLaunch("Saltando no Hiperespaço");
       case 16: return renderLaunch("Acelerando Missão");
-      case 17: return renderLaunch("Rumo à Vitória");
-      case 4: return renderAlert(<AlertTriangle className="text-red-500" />, "Atenção!", "Chuva de meteoros detectada: Inadimplência à vista!", 5);
+      case 17: return renderVictoryLaunch("Rota de crescimento ativada com sucesso!");
+      case 4: return renderAlert(<AlertTriangle className="text-red-500" />, "Atenção!", `Chuva de meteoros detectada: 
+Fluxo de caixa instável e recebimento 
+de mensalidades em atraso.`, 5);
       case 5: return renderDecision(
         "Para estabilizar a nave, qual decisão você toma?", 
-        ["Adiar pagamentos da equipe", "Ignorar e seguir rota", "Usar KEDU para previsibilidade financeira"], 
+        ["Adiar pagamento da folha.", "Adiar pagamento de fornecedores.", "Usar a kedu para a previsibilidade financeira."], 
         2, 6
       );
       case 6: return renderSuccess(<Shield className="text-emerald-400" />, "Escudos OK!", "Agora sua escola não precisa mais lidar com fluxo de caixa instável.", 15);
-      case 7: return renderAlert(<Wifi className="text-red-500 animate-pulse" />, "Sem Sinal", "Seu foguete não está sendo detectado. Sua escola está invisível para o universo.", 8);
+      case 7: return renderAlert(<Wifi className="text-red-500 animate-pulse" />, "Sem Sinal", `Seu foguete está paralisado. 
+Sua escola está captando o mesmo 
+número de alunos que está perdendo.`, 8);
       case 8: return renderDecision(
         "Para sair dessa situação, \nqual ação você toma?", 
-        ["Esperar indicações", "Marketing estratégico e posicionamento", "Reduzir custos de marketing"], 
+        ["Esperar indicações.", "Marketing estratégico para captação de novos alunos.", "Reduzir custos de marketing."], 
         1, 9
       );
       case 9: return renderSuccess(<Wifi className="text-emerald-400" />, "Sinal Forte", "Captação de matrículas \natingiu a velocidade da luz!", 16);
-      case 10: return renderAlert(<Battery className="text-red-500 rotate-90" />, "Baixa Energia", "Sem investimento, a expansão da escola está paralisada.", 11);
+      case 10: return renderAlert(<Zap className="text-red-500 animate-pulse" />, "Atenção!", `Sem crédito rápido e aprovado
+para investir, a expansão da escola
+está paralisada.`, 11);
       case 11: return renderDecision(
         "Como obter potência \npara crescer?", 
-        ["Parar projetos", "Crédito estruturado para investir", "Esperar sobra de caixa"], 
-        1, 12
+        ["Crédito estruturado para investir.", "Parar projetos.", "Esperar sobra de caixa."], 
+        0, 12
       );
       case 12: return renderSuccess(<Zap className="text-yellow-400 fill-yellow-400" />, "Impulso!", "Combustível reabastecido.\nPotência total para dominar o setor!", 17, true);
       case 13: return renderFinal();
@@ -388,8 +524,8 @@ tudo fica mais leve.`);
 
   return (
     <div className="w-full h-[100dvh] bg-black flex items-center justify-center overflow-hidden font-sans">
-      {/* Dynamic responsive container */}
-      <div className="relative w-full h-full max-w-2xl bg-slate-950 overflow-hidden shadow-2xl">
+      {/* Container na proporção 1080x1920 (9:16) */}
+      <div className="relative h-full aspect-[9/16] bg-slate-950 overflow-hidden shadow-2xl">
         <SpaceBackground />
         <div className="relative z-10 w-full h-full">
           {renderCurrentStage()}
