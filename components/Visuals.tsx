@@ -2,12 +2,15 @@
 import React, { useMemo } from 'react';
 
 export const LOGO_URL = "https://i.ibb.co/ymRw3mjX/kedu-logo-new.png";
-export const PILOT_1_URL = "https://i.ibb.co/pvry1Mv3/comandante1.png";
-export const PILOT_2_URL = "https://i.ibb.co/cS3kNj0p/comandante2.png";
-export const PILOT_3_URL = "https://i.postimg.cc/bSJv955X/Ativo-3.png";
-export const PILOT_4_URL = "https://iili.io/qQQVtgp.png";
+export const PILOT_1_URL = "https://iili.io/BsVngN1.png";
+export const PILOT_2_URL = "https://iili.io/BsVnrDF.png";
+export const PILOT_3_URL = "https://iili.io/BsVzKw7.png";
+export const PILOT_4_URL = "https://iili.io/BsVzft9.png";
+export const PILOT_5_URL = "https://iili.io/BsVfLyF.png";
+export const CABIN_IMAGE_URL = "https://iili.io/BsVfZTg.png";
 export const ROCKET_URL = "https://iili.io/qQt6dNe.png";
 export const SUCCESS_ICON_URL = "https://iili.io/qttLDoN.png";
+export const FINAL_FOOTER_URL = "https://iili.io/BsVrqPV.png";
 
 export const RealisticRocket: React.FC<{ className?: string; size?: number }> = ({ className = "", size = 200 }) => (
   <div className={className} style={{ width: size, height: 'auto' }}>
@@ -95,11 +98,11 @@ export const SpaceBackground: React.FC = () => {
 };
 
 export const HeaderLogo: React.FC = () => (
-  <div className="absolute top-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-700 w-full flex justify-center px-8">
+  <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-6 duration-700 w-full flex justify-center px-12">
     <img 
       src={LOGO_URL} 
       alt="Kedu Logo" 
-      className="max-h-24 w-auto object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" 
+      className="max-h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]" 
       onError={(e) => {
         (e.target as HTMLImageElement).src = "https://kedu.com.br/wp-content/uploads/2021/08/logo-kedu-horizontal-azul.png";
       }}
@@ -109,11 +112,11 @@ export const HeaderLogo: React.FC = () => (
 );
 
 export const StaticHeaderLogo: React.FC = () => (
-  <div className="absolute top-8 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center px-8">
+  <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center px-12">
     <img 
       src={LOGO_URL} 
       alt="Kedu Logo" 
-      className="max-h-24 w-auto object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" 
+      className="max-h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]" 
       onError={(e) => {
         (e.target as HTMLImageElement).src = "https://kedu.com.br/wp-content/uploads/2021/08/logo-kedu-horizontal-azul.png";
       }}
@@ -123,11 +126,11 @@ export const StaticHeaderLogo: React.FC = () => (
 );
 
 export const FooterLogo: React.FC = () => (
-  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom-4 duration-700 w-full flex justify-center px-8">
+  <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom-6 duration-700 w-full flex justify-center px-12">
     <img 
       src={LOGO_URL} 
       alt="Kedu Logo" 
-      className="max-h-24 w-auto object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" 
+      className="max-h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]" 
       onError={(e) => {
         (e.target as HTMLImageElement).src = "https://kedu.com.br/wp-content/uploads/2021/08/logo-kedu-horizontal-azul.png";
       }}
@@ -138,12 +141,12 @@ export const FooterLogo: React.FC = () => (
 
 export const BoletoMeteorShower: React.FC = () => {
   const boletos = useMemo(() => {
-    return [...Array(7)].map((_, i) => ({
+    return [...Array(8)].map((_, i) => ({
       id: i,
       left: Math.random() * 120 - 10 + '%',
       delay: Math.random() * 5 + 's',
       duration: Math.random() * 1.5 + 1.5 + 's',
-      size: Math.random() * 20 + 35 + 'px',
+      size: Math.random() * 40 + 70 + 'px',
       opacity: Math.random() * 0.6 + 0.4,
     }));
   }, []);
