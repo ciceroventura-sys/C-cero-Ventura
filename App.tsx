@@ -198,7 +198,7 @@ mais expressivos.`);
         <AlertTriangle size={150} className="text-red-500" />
       </div>
       <h2 className="text-7xl md:text-9xl font-black text-white mb-6 text-center uppercase tracking-tighter drop-shadow-2xl relative z-10 leading-none">Impacto!</h2>
-      <p className="text-[32px] md:text-4xl text-red-100 text-center mb-16 max-w-[800px] leading-[1.8] relative z-10 whitespace-pre-line">
+      <p className="text-[32px] md:text-4xl text-red-100 text-center mb-16 max-w-[800px] leading-relaxed relative z-10 whitespace-pre-line">
         Essa decisão pode 
 comprometer o fluxo da missão.
 Ajuste a rota, comandante.
@@ -224,7 +224,7 @@ Ajuste a rota, comandante.
         </div>
         
         <div className="mb-20">
-          <p className="text-[48px] text-white font-nasa tracking-wider leading-[85px] uppercase text-center font-bold">
+          <p className="text-[48px] text-white font-nasa tracking-wider leading-relaxed uppercase text-center font-bold">
             Descubra como<br/>
             levar sua escola<br/>
             <span className="text-blue-400 text-[46px] font-bold">para o próximo nível.</span>
@@ -242,8 +242,8 @@ Ajuste a rota, comandante.
 
   const renderIntro = () => (
     <div className="flex flex-col items-center justify-between h-full py-20 px-6 text-center relative z-10 overflow-y-auto w-full">
-      <div className="w-full flex flex-col items-center gap-16">
-        <div className="animate-in zoom-in duration-1000 w-full flex justify-center h-[200px] leading-[150px]">
+      <div className="w-full flex flex-col items-center gap-10">
+        <div className="animate-in zoom-in duration-1000 w-full flex justify-center h-[200px]">
           <img 
             src={LOGO_URL} 
             alt="Kedu Logo" 
@@ -251,13 +251,13 @@ Ajuste a rota, comandante.
             referrerPolicy="no-referrer"
           />
         </div>
-        <h1 className="text-[120px] font-black text-white uppercase tracking-tighter drop-shadow-[0_0_40px_rgba(255,255,255,0.3)] leading-[130px] h-[300px] mb-10 font-nasa text-center">
-          Base Espacial<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-nasa">KEDU</span>
+        <h1 className="text-[100px] font-black text-white uppercase tracking-tighter drop-shadow-[0_0_40px_rgba(255,255,255,0.3)] leading-tight mb-6 font-nasa text-center">
+          Base Espacial<br/><span className="text-[140px] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-nasa">KEDU</span>
         </h1>
       </div>
 
       <div className="bg-slate-900/70 backdrop-blur-md p-16 rounded-[3rem] border-4 border-slate-700 shadow-2xl my-12 w-full max-w-[850px]">
-        <p className="text-[48px] text-slate-100 font-normal leading-[65px] animate-in fade-in duration-700 font-sans whitespace-pre-line text-center">{introText}</p>
+        <p className="text-[48px] text-slate-100 font-normal leading-relaxed animate-in fade-in duration-700 font-sans whitespace-pre-line text-center">{introText}</p>
       </div>
 
       <div className="w-full max-w-[700px] mt-12 pb-20">
@@ -281,7 +281,7 @@ Ajuste a rota, comandante.
       <div className="flex flex-col items-center h-full py-8 px-6 relative z-10 overflow-y-auto">
         <div className="mt-12 mb-16 text-center">
           <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-widest font-nasa leading-tight">O Piloto</h2>
-          <p className="text-[42px] text-[#5da4f5] font-nasa uppercase tracking-widest leading-[95px] font-bold">Quem assume o comando?</p>
+          <p className="text-[42px] text-[#5da4f5] font-nasa uppercase tracking-widest leading-normal font-bold">Quem assume o comando?</p>
         </div>
         <div className="flex-1 w-full flex flex-col gap-10 justify-start mt-20 max-w-[850px] pb-32">
           {pilots.map((p) => (
@@ -300,7 +300,7 @@ Ajuste a rota, comandante.
                 />
               </div>
               <div className="text-left flex-1">
-                <span className="text-2xl md:text-4xl font-black text-white uppercase tracking-wider leading-[1.4]">{p.name}</span>
+                <span className="text-2xl md:text-4xl font-black text-white uppercase tracking-wider leading-tight">{p.name}</span>
                 <p className="text-blue-300 font-bold uppercase text-sm mt-2">Status: Pronto</p>
               </div>
               {pilot === p.id && <CheckCircle className="text-blue-400" size={40} />}
@@ -402,7 +402,7 @@ Ajuste a rota, comandante.
         </div>
         <h2 className="text-5xl md:text-7xl font-black text-red-500 mb-14 uppercase tracking-tighter leading-none font-nasa">{title}</h2>
         <div className="bg-slate-900/90 border-4 border-red-500/50 p-10 md:p-14 rounded-[3rem] mb-12 shadow-2xl text-center">
-          <p className="text-3xl md:text-5xl text-white leading-[180px] font-medium whitespace-pre-line">{text}</p>
+          <p className="text-3xl md:text-5xl text-white leading-relaxed font-medium whitespace-pre-line">{text}</p>
         </div>
         <div className="w-full max-w-md mt-16">
           <ActionButton onClick={() => setStage(next)} variant="alert" className="min-h-[120px] text-3xl">ACESSAR PAINEL</ActionButton>
@@ -422,7 +422,7 @@ Ajuste a rota, comandante.
         <div className="h-2 w-24 bg-blue-500 rounded-full mt-4"></div>
       </div>
       <div className="mb-16 text-center">
-        <h3 className="text-4xl md:text-6xl font-black text-white leading-[2.0] whitespace-pre-line">{question}</h3>
+        <h3 className="text-4xl md:text-6xl font-black text-white leading-relaxed whitespace-pre-line">{question}</h3>
       </div>
       <div className="flex flex-col gap-10 w-full max-w-[900px] mx-auto pb-32 mt-16">
         {options.map((opt, idx) => (
@@ -433,7 +433,7 @@ Ajuste a rota, comandante.
           >
             <div className="flex items-start gap-8">
               <div className="mt-1 w-12 h-12 rounded-full border-4 border-slate-500 flex-shrink-0 flex items-center justify-center text-xl text-white font-black group-hover:bg-blue-500/20">{idx + 1}</div>
-              <span className="text-2xl md:text-4xl text-slate-100 font-bold leading-[1.8]">{opt}</span>
+              <span className="text-2xl md:text-4xl text-slate-100 font-bold leading-relaxed">{opt}</span>
             </div>
           </button>
         ))}
@@ -456,7 +456,7 @@ Ajuste a rota, comandante.
            {React.cloneElement(icon as React.ReactElement, { size: 140 })}
         </div>
         <h2 className="text-5xl font-black text-emerald-400 mb-14 uppercase tracking-widest leading-none font-nasa">{title}</h2>
-        <p className="text-3xl md:text-5xl text-white leading-[250px] mb-14 mt-10 font-medium whitespace-pre-line">{text}</p>
+        <p className="text-3xl md:text-5xl text-white leading-relaxed mb-14 mt-10 font-medium whitespace-pre-line">{text}</p>
         <div className="w-full max-w-md mt-16">
           <ActionButton onClick={() => setStage(next)} variant="success" className="min-h-[120px] text-3xl">
             {isFinal ? "CONCLUIR" : "PRÓXIMO"} <ArrowRight className="ml-4" size={40} />
@@ -533,7 +533,7 @@ Ajuste a rota, comandante.
           <h1 className="text-7xl md:text-9xl font-black text-white uppercase mb-12 tracking-tighter leading-none font-nasa">Missão Cumprida!</h1>
           <div className="bg-white/10 backdrop-blur-md p-14 rounded-[3.5rem] border-4 border-white/20 shadow-2xl mb-12">
             <div className="font-black text-blue-300 text-4xl md:text-5xl uppercase tracking-widest font-nasa mb-10">Escola em Órbita</div>
-            <p className="text-3xl md:text-5xl text-slate-100 font-medium leading-[250px] whitespace-pre-line">{outroText}</p>
+            <p className="text-3xl md:text-5xl text-slate-100 font-medium leading-relaxed whitespace-pre-line">{outroText}</p>
           </div>
           <div className="w-full max-w-md mx-auto mt-12 px-6">
             <ActionButton onClick={() => setStage(14)} variant="primary" className="min-h-[120px] text-3xl">FINALIZAR</ActionButton>
@@ -566,8 +566,8 @@ Ajuste a rota, comandante.
              referrerPolicy="no-referrer"
            />
          </div>
-         <h2 className="text-4xl md:text-5xl font-black text-blue-500 mb-12 uppercase tracking-tighter font-nasa whitespace-nowrap leading-[90px]">Cabine de fotos</h2>
-         <p className="text-3xl md:text-5xl text-slate-200 mb-20 leading-[130px] whitespace-pre-line">Sua escola agora brilha em{"\n"}uma nova galáxia de resultados.</p>
+         <h2 className="text-4xl md:text-5xl font-black text-blue-500 mb-12 uppercase tracking-tighter font-nasa whitespace-nowrap leading-tight">Cabine de fotos</h2>
+         <p className="text-3xl md:text-5xl text-slate-200 mb-20 leading-relaxed whitespace-pre-line">Sua escola agora brilha em{"\n"}uma nova galáxia de resultados.</p>
          <div className="w-full max-w-md mx-auto mt-20">
             <ActionButton onClick={() => window.location.reload()} variant="primary" className="min-h-[120px] text-3xl">NOVA MISSÃO</ActionButton>
          </div>
@@ -620,7 +620,7 @@ Ajuste a rota, comandante.
       </div>
       
       <div className="relative z-20 text-center mt-[-20%] p-14 bg-blue-400/10 border-4 border-blue-300/30 rounded-[3.5rem] backdrop-blur-xl shadow-[0_0_80px_rgba(59,130,246,0.3)] max-w-[800px]">
-        <h2 className="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-[1.6] font-nasa animate-in zoom-in duration-500">{title}</h2>
+        <h2 className="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-snug font-nasa animate-in zoom-in duration-500">{title}</h2>
         <div className="flex justify-center gap-6 mb-8">
            <Star className="text-yellow-400 fill-yellow-400 animate-pulse" size={60} />
            <Star className="text-yellow-400 fill-yellow-400 animate-pulse delay-75" size={60} />
