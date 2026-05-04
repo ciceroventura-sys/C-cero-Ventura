@@ -1,7 +1,7 @@
 
 import React, { useMemo } from 'react';
 
-export const LOGO_URL = "https://i.ibb.co/ymRw3mjX/kedu-logo-new.png";
+export const LOGO_URL = "https://iili.io/BQhTZYP.png";
 export const PILOT_1_URL = "https://iili.io/BsVngN1.png";
 export const PILOT_2_URL = "https://iili.io/BsVnrDF.png";
 export const PILOT_3_URL = "https://iili.io/BsVzKw7.png";

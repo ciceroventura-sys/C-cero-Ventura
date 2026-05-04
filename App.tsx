@@ -156,7 +156,7 @@ mais expressivos.`);
   const getPilotName = () => {
     switch(pilot) {
       case 'alpha': return 'Comandante Paulo Freire';
-      case 'beta': return 'Comandante Raquel de Queiroz';
+      case 'beta': return 'Comandante Rachel de Queiroz';
       case 'gamma': return 'Comandante José Saramago';
       case 'delta': return 'Comandante Darcy Ribeiro';
       case 'epsilon': return 'Comandante Anísio Teixeira';
@@ -260,8 +260,13 @@ Ajuste a rota, comandante.
         <p className="text-[48px] text-slate-100 font-normal leading-relaxed animate-in fade-in duration-700 font-sans whitespace-pre-line text-center">{introText}</p>
       </div>
 
-      <div className="w-full max-w-[700px] mt-12 pb-20">
-        <ActionButton onClick={handleStart} variant="primary" className="min-h-[150px] text-4xl shadow-[0_0_50px_rgba(59,130,246,0.5)]">
+      <div className="w-full mt-12 pb-20 flex justify-center">
+        <ActionButton 
+          onClick={handleStart} 
+          variant="primary" 
+          className="shadow-[0_0_50px_rgba(59,130,246,0.5)]"
+          style={{ width: '791px', height: '729.23px', fontSize: '4rem' }}
+        >
           INICIAR MISSÃO
         </ActionButton>
       </div>
@@ -271,7 +276,7 @@ Ajuste a rota, comandante.
   const renderPilotSelection = () => {
     const pilots = [
       { id: 'alpha', name: 'Comandante Paulo Freire', url: PILOT_1_URL },
-      { id: 'beta', name: 'Comandante Raquel de Queiroz', url: PILOT_2_URL },
+      { id: 'beta', name: 'Comandante Rachel de Queiroz', url: PILOT_2_URL },
       { id: 'gamma', name: 'Comandante José Saramago', url: PILOT_3_URL },
       { id: 'delta', name: 'Comandante Darcy Ribeiro', url: PILOT_4_URL },
       { id: 'epsilon', name: 'Comandante Anísio Teixeira', url: PILOT_5_URL },
