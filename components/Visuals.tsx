@@ -3,10 +3,10 @@ import React, { useMemo } from 'react';
 
 export const LOGO_URL = "https://iili.io/BQhTZYP.png";
 export const PILOT_1_URL = "https://iili.io/BsVngN1.png";
-export const PILOT_2_URL = "https://iili.io/BsVnrDF.png";
+export const PILOT_2_URL = "https://iili.io/BZdvq9R.png";
 export const PILOT_3_URL = "https://iili.io/BsVzKw7.png";
-export const PILOT_4_URL = "https://iili.io/BsVzft9.png";
-export const PILOT_5_URL = "https://iili.io/BsVfLyF.png";
+export const PILOT_4_URL = "https://iili.io/BZdvK8v.png";
+export const PILOT_5_URL = "https://iili.io/BZd8h1n.png";
 export const CABIN_IMAGE_URL = "https://iili.io/BsVfZTg.png";
 export const ROCKET_URL = "https://iili.io/qQt6dNe.png";
 export const SUCCESS_ICON_URL = "https://iili.io/qttLDoN.png";
