@@ -260,12 +260,11 @@ Ajuste a rota, comandante.
         <p className="text-[48px] text-slate-100 font-normal leading-relaxed animate-in fade-in duration-700 font-sans whitespace-pre-line text-center">{introText}</p>
       </div>
 
-      <div className="w-full mt-12 pb-20 flex justify-center">
+      <div className="w-full max-w-[700px] mt-12 pb-20">
         <ActionButton 
           onClick={handleStart} 
           variant="primary" 
-          className="shadow-[0_0_50px_rgba(59,130,246,0.5)]"
-          style={{ width: '791px', height: '729.23px', fontSize: '4rem' }}
+          className="min-h-[150px] text-4xl shadow-[0_0_50px_rgba(59,130,246,0.5)]"
         >
           INICIAR MISSÃO
         </ActionButton>
